@@ -1,0 +1,13 @@
+.answer {
+  display: flex;
+  background-color: #f0f8ff;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 60px;
+  font-weight: bold;
+  height: 130px;
+
+  .answer-item {
+    flex: 1;
+  }
+}
