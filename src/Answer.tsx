@@ -1,15 +1,15 @@
 import React from "react";
 
 interface Props {
-  answer: number[];
+  number: number[];
 }
 
-const Answer: React.FC<Props> = ({ answer }) => {
+const Answer: React.FC<Props> = ({ number }) => {
   return (
     <div className="answer">
-      <div className="answer-item">{answer[0]}</div>
-      <div className="answer-item">{answer[1]}</div>
-      <div className="answer-item">{answer[2]}</div>
+      <div className="answer-item">{number[0]}</div>
+      <div className="answer-item">{number[1]}</div>
+      <div className="answer-item">{number[2]}</div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Answer from "./Answer";
 import Numbers from "./Numbers";
+import Result from "./Result";
 
 const Game = () => {
   const [answerNumber, setAnswerNumber] = useState<number[]>([]);
@@ -23,7 +24,6 @@ const Game = () => {
     }
 
     setAnswerNumber(arr);
-    console.log(arr);
   }, []);
 
   const onClickNumber = (number: number) => {
@@ -45,8 +45,8 @@ const Game = () => {
   return (
     <div className="game d-flex flex-column">
       <h1 className="my-3">숫자 야구 게임</h1>
-      <Answer answer={curNumber} />
-      <div className="border m-1 flex-fill">결과</div>
+      <Answer number={curNumber} />
+      <Result answer={answerNumber} numberList={numberList} />
       <Numbers onClickNumber={onClickNumber} />
     </div>
   );
