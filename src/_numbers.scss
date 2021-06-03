@@ -1,5 +1,4 @@
 .numbers {
-  border: 1px solid lightgray;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
@@ -7,5 +6,6 @@
   .btn {
     height: 70px;
     font-size: 40px;
+    border-radius: 10px;
   }
 }

@@ -10,7 +10,7 @@ interface Prop {
  */
 const Numbers: React.FC<Prop> = ({ onClickNumber }) => {
   return (
-    <div className="numbers border m-1">
+    <div className="numbers">
       {Array(10)
         .fill(0)
         .map((_, index) => (
