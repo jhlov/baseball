@@ -66,12 +66,22 @@ const Game = () => {
     }
   };
 
+  const onClickBack = () => {
+    if (0 < curNumber.length && curNumber.length < 3) {
+      setCurNumber(curNumber.slice(0, curNumber.length - 1));
+    }
+  };
+
   return (
     <div className="game d-flex flex-column">
       <h1 className="my-3">숫자 야구 게임</h1>
       <Answer number={curNumber} />
       <Result answer={answerNumber} numberList={numberList} />
-      <Numbers onClickNumber={onClickNumber} />
+      <Numbers
+        onClickNumber={onClickNumber}
+        isShowBackButton={0 < curNumber.length && curNumber.length < 3}
+        onClickBack={onClickBack}
+      />
     </div>
   );
 };

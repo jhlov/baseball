@@ -1,11 +1,24 @@
 .numbers {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 4px;
+  position: relative;
 
-  .btn {
-    height: 70px;
-    font-size: 40px;
-    border-radius: 10px;
+  .btn-back {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: bold;
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+
+    .btn {
+      height: 70px;
+      font-size: 40px;
+      border-radius: 10px;
+    }
   }
 }
