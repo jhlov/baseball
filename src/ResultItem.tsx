@@ -14,6 +14,25 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
     return number.filter(e => answer.includes(e)).length - strike();
   };
 
+  const result = () => {
+    const r = Array(strike())
+      .fill(0)
+      .map(_ => "S")
+      .concat(
+        Array(ball())
+          .fill(0)
+          .map(_ => "B")
+      )
+      .concat(
+        Array(3 - strike() - ball())
+          .fill(0)
+          .map(_ => "OUT")
+      );
+
+    console.log(r);
+    return r;
+  };
+
   return (
     <div className="result-item">
       <div>
@@ -22,7 +41,11 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
         ))}
       </div>
       <div>
-        {strike()}S {ball()}B
+        {result().map((e, index) => (
+          <span key={index} className={e}>
+            {e}
+          </span>
+        ))}
       </div>
     </div>
   );

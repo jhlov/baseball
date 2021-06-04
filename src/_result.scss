@@ -11,5 +11,47 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    line-height: 1;
+
+    div {
+      &:first-child {
+        display: flex;
+        padding: 0 20px;
+        justify-content: space-around;
+      }
+
+      &:last-child {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 8px;
+
+        span {
+          color: white;
+          width: 28px;
+          display: inline-block;
+          border-radius: 14px;
+        }
+
+        .S {
+          background-color: green;
+          font-size: 20px;
+          padding: 4px;
+        }
+
+        .B {
+          font-size: 20px;
+          padding: 4px;
+          background-color: goldenrod;
+        }
+
+        .OUT,
+        .out {
+          font-size: 14px;
+          background-color: red;
+          padding: 7px 0;
+        }
+      }
+    }
   }
 }
