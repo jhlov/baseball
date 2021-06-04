@@ -10,6 +10,10 @@ const Game = () => {
 
   useEffect(() => {
     console.log("mounted");
+    updateAnswerNumber();
+  }, []);
+
+  const updateAnswerNumber = () => {
     const arr: number[] = [];
 
     // 정답
@@ -24,11 +28,17 @@ const Game = () => {
     }
 
     setAnswerNumber(arr);
-  }, []);
+  };
+
+  const init = () => {
+    updateAnswerNumber();
+    setCurNumber([]);
+    setNumberList([]);
+  };
 
   const onClickNumber = (number: number) => {
-    // 새로운 숫자가 들어옴
     if (curNumber.length === 3) {
+      // 새로운 숫자가 들어옴
       setCurNumber([number]);
     } else if (!curNumber.includes(number)) {
       const newNumber = [...curNumber, number];
@@ -38,6 +48,20 @@ const Game = () => {
         const newNumberList = [...numberList, newNumber];
         //console.log(newNumberList);
         setNumberList(newNumberList);
+
+        // 정답 체크
+        if (answerNumber.join() === newNumber.join()) {
+          process.nextTick(() => {
+            alert("승리!!!");
+            init();
+          });
+        } else if (newNumberList.length === 9) {
+          // 실패 체크
+          process.nextTick(() => {
+            alert("실패!!!");
+            init();
+          });
+        }
       }
     }
   };
