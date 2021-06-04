@@ -7,6 +7,7 @@ const Game = () => {
   const [answerNumber, setAnswerNumber] = useState<number[]>([]);
   const [curNumber, setCurNumber] = useState<number[]>([]);
   const [numberList, setNumberList] = useState<number[][]>([]);
+  const [clickEnabled, setClickEnabled] = useState<boolean>(true);
 
   useEffect(() => {
     console.log("mounted");
@@ -48,19 +49,23 @@ const Game = () => {
         const newNumberList = [...numberList, newNumber];
         //console.log(newNumberList);
         setNumberList(newNumberList);
+        setClickEnabled(false);
+        setTimeout(() => {
+          setClickEnabled(true);
+        }, 1000);
 
         // 정답 체크
         if (answerNumber.join() === newNumber.join()) {
-          process.nextTick(() => {
+          setTimeout(() => {
             alert("승리!!!");
             init();
-          });
+          }, 1000);
         } else if (newNumberList.length === 9) {
           // 실패 체크
-          process.nextTick(() => {
+          setTimeout(() => {
             alert("실패!!!");
             init();
-          });
+          }, 1000);
         }
       }
     }
@@ -78,6 +83,7 @@ const Game = () => {
       <Answer number={curNumber} />
       <Result answer={answerNumber} numberList={numberList} />
       <Numbers
+        clickEnabled={clickEnabled}
         onClickNumber={onClickNumber}
         isShowBackButton={0 < curNumber.length && curNumber.length < 3}
         onClickBack={onClickBack}

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 
 interface Props {
@@ -15,7 +16,7 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
   };
 
   const result = () => {
-    const r = Array(strike())
+    return Array(strike())
       .fill(0)
       .map(_ => "S")
       .concat(
@@ -28,9 +29,6 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
           .fill(0)
           .map(_ => "OUT")
       );
-
-    console.log(r);
-    return r;
   };
 
   return (
@@ -42,7 +40,7 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
       </div>
       <div>
         {result().map((e, index) => (
-          <span key={index} className={e}>
+          <span key={index} className={classNames([e, `item-${index + 1}`])}>
             {e}
           </span>
         ))}

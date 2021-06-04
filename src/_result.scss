@@ -31,6 +31,25 @@
           width: 28px;
           display: inline-block;
           border-radius: 14px;
+          opacity: 0;
+          animation-name: fadeIn;
+          animation-fill-mode: forwards;
+          animation-timing-function: ease-out;
+        }
+
+        .item-1 {
+          animation-delay: 0s;
+          animation-duration: 1s;
+        }
+
+        .item-2 {
+          animation-delay: 0.5s;
+          animation-duration: 1s;
+        }
+
+        .item-3 {
+          animation-delay: 1s;
+          animation-duration: 1s;
         }
 
         .S {
@@ -53,5 +72,15 @@
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 interface Prop {
+  clickEnabled: boolean;
   onClickNumber: Function;
   isShowBackButton: boolean;
   onClickBack: Function;
@@ -11,6 +12,7 @@ interface Prop {
  * 하단 숫자판
  */
 const Numbers: React.FC<Prop> = ({
+  clickEnabled,
   onClickNumber,
   isShowBackButton,
   onClickBack
@@ -31,7 +33,11 @@ const Numbers: React.FC<Prop> = ({
         {Array(10)
           .fill(0)
           .map((_, index) => (
-            <Button key={index} onClick={() => onClickNumber(index)}>
+            <Button
+              key={index}
+              disabled={!clickEnabled}
+              onClick={() => onClickNumber(index)}
+            >
               {index}
             </Button>
           ))}
