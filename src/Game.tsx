@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Answer from "./Answer";
+import GameModal from "./GameModal";
 import Numbers from "./Numbers";
 import Result from "./Result";
 
@@ -8,6 +9,7 @@ const Game = () => {
   const [curNumber, setCurNumber] = useState<number[]>([]);
   const [numberList, setNumberList] = useState<number[][]>([]);
   const [clickEnabled, setClickEnabled] = useState<boolean>(true);
+  const [gameStatus, setGameStatus] = useState<"win" | "lose" | null>(null);
 
   useEffect(() => {
     console.log("mounted");
@@ -35,6 +37,8 @@ const Game = () => {
     updateAnswerNumber();
     setCurNumber([]);
     setNumberList([]);
+    setGameStatus(null);
+    setClickEnabled(true);
     setTimeout(() => {
       window.focus();
       gameRef.current?.focus();
@@ -42,6 +46,8 @@ const Game = () => {
   };
 
   const onClickNumber = (number: number) => {
+    if (gameStatus) return;
+
     if (curNumber.length === 3) {
       // 새로운 숫자가 들어옴
       setCurNumber([number]);
@@ -51,7 +57,6 @@ const Game = () => {
 
       if (newNumber.length === 3) {
         const newNumberList = [...numberList, newNumber];
-        //console.log(newNumberList);
         setNumberList(newNumberList);
         // 순차 판정 애니메이션 동안 클릭 잠금 (1.8초)
         setClickEnabled(false);
@@ -59,32 +64,31 @@ const Game = () => {
           setClickEnabled(true);
         }, 1800);
 
-        // 정답 체크 (결과 램프 3단계 점등 완료 후 alert 표시)
+        // 정답 체크 (결과 램프 3단계 점등 완료 후 모달 표시)
         if (answerNumber.join() === newNumber.join()) {
           setTimeout(() => {
-            alert("승리!!!");
-            init();
-          }, 2000);
+            setGameStatus("win");
+          }, 1900);
         } else if (newNumberList.length === 9) {
           // 실패 체크
           setTimeout(() => {
-            alert("실패!!!");
-            init();
-          }, 2000);
+            setGameStatus("lose");
+          }, 1900);
         }
       }
     }
   };
 
   const onClickBack = () => {
+    if (gameStatus) return;
     if (0 < curNumber.length && curNumber.length < 3) {
       setCurNumber(curNumber.slice(0, curNumber.length - 1));
     }
   };
 
   const gameRef = React.useRef<HTMLDivElement>(null);
-  const handlersRef = React.useRef({ onClickNumber, onClickBack, clickEnabled });
-  handlersRef.current = { onClickNumber, onClickBack, clickEnabled };
+  const handlersRef = React.useRef({ onClickNumber, onClickBack, clickEnabled, gameStatus });
+  handlersRef.current = { onClickNumber, onClickBack, clickEnabled, gameStatus };
 
   useEffect(() => {
     // 마운트 시 게임 컨테이너로 포커스 자동 이동
@@ -92,8 +96,8 @@ const Game = () => {
     gameRef.current?.focus();
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // 키를 꾹 누르고 있을 때의 연속 트리거 방지
-      if (e.repeat) return;
+      // 모달이 열려있거나 키를 꾹 누르고 있을 때의 연속 트리거 방지
+      if (handlersRef.current.gameStatus || e.repeat) return;
 
       // 0~9 숫자 키패드 지원
       if (/^[0-9]$/.test(e.key)) {
@@ -131,6 +135,13 @@ const Game = () => {
         onClickNumber={onClickNumber}
         isShowBackButton={0 < curNumber.length && curNumber.length < 3}
         onClickBack={onClickBack}
+      />
+
+      <GameModal
+        status={gameStatus}
+        round={numberList.length}
+        answer={answerNumber}
+        onRestart={init}
       />
     </div>
   );
