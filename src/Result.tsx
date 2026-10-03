@@ -8,10 +8,27 @@ interface Props {
 
 const Result: React.FC<Props> = ({ answer, numberList }) => {
   return (
-    <div className="result my-3 flex-fill">
-      {numberList.map((e, index) => (
-        <ResultItem key={index} answer={answer} number={e} />
-      ))}
+    <div className="result my-2 flex-fill">
+      {Array(9)
+        .fill(0)
+        .map((_, index) => {
+          const item = numberList[index];
+          if (item) {
+            return (
+              <ResultItem
+                key={index}
+                round={index + 1}
+                answer={answer}
+                number={item}
+              />
+            );
+          }
+          return (
+            <div key={index} className="result-item empty-slot">
+              <span className="round-label">{index + 1}회</span>
+            </div>
+          );
+        })}
     </div>
   );
 };

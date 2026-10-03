@@ -7,9 +7,15 @@ interface Props {
 const Answer: React.FC<Props> = ({ number }) => {
   return (
     <div className="answer">
-      <div className="answer-item">{number[0]}</div>
-      <div className="answer-item">{number[1]}</div>
-      <div className="answer-item">{number[2]}</div>
+      {[0, 1, 2].map((idx) => {
+        const val = number[idx];
+        const isFilled = val !== undefined;
+        return (
+          <div key={idx} className={`answer-item ${isFilled ? "has-value" : "empty"}`}>
+            {isFilled ? val : <span className="placeholder-dot">·</span>}
+          </div>
+        );
+      })}
     </div>
   );
 };

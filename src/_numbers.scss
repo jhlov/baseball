@@ -1,24 +1,95 @@
 .numbers {
   position: relative;
+  margin-top: auto;
+  padding-top: 10px;
 
-  .btn-back {
-    position: absolute;
-    top: -30px;
-    right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-weight: bold;
+  .numbers-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 34px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+
+    .hint-text {
+      font-size: 13px;
+      color: #94a3b8;
+      letter-spacing: -0.3px;
+    }
+
+    .btn-back {
+      border: none;
+      background-color: #fee2e2;
+      color: #ef4444;
+      font-size: 13px;
+      font-weight: bold;
+      font-family: inherit;
+      padding: 4px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(2px);
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 0 #fca5a5;
+
+      &.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(2px);
+        box-shadow: none;
+      }
+    }
   }
 
   .numbers-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+    gap: 8px;
 
-    .btn {
-      height: 70px;
-      font-size: 40px;
-      border-radius: 10px;
+    .keypad-btn {
+      height: 64px;
+      font-size: 32px;
+      font-weight: bold;
+      font-family: inherit;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #1e293b;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #cbd5e1;
+      transition: all 0.1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      outline: none;
+
+      @include media-breakpoint-up(sm) {
+        height: 70px;
+        font-size: 36px;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: #f8fafc;
+        border-color: #cbd5e1;
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #cbd5e1;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        box-shadow: 0 2px 0 #e2e8f0;
+        background-color: #f8fafc;
+      }
     }
   }
 }

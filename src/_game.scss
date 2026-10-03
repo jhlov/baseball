@@ -1,3 +1,32 @@
 .game {
-  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+
+  .game-title {
+    font-size: 26px;
+    color: #1e293b;
+    margin: 8px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: -0.5px;
+
+    .icon {
+      font-size: 28px;
+      display: inline-block;
+      animation: bounce 2s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }

@@ -7,15 +7,27 @@
 .App {
   text-align: center;
   font-family: "Jua", sans-serif;
+  background-color: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .mobile-container {
-    padding: 0 15px;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    padding: 16px 20px 24px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
 
     @include media-breakpoint-up(sm) {
-      width: 500px;
-      min-height: 100vh;
-      margin: 0 auto;
-      border: 1px solid lightgrey;
+      min-height: 94vh;
+      border-radius: 28px;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      margin: 20px auto;
     }
   }
 }

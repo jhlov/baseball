@@ -79,7 +79,9 @@ const Game = () => {
 
   return (
     <div className="game d-flex flex-column">
-      <h1 className="my-3">숫자 야구 게임</h1>
+      <h1 className="game-title">
+        <span className="icon">⚾</span> 숫자 야구 게임
+      </h1>
       <Answer number={curNumber} />
       <Result answer={answerNumber} numberList={numberList} />
       <Numbers

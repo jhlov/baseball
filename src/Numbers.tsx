@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 
 interface Prop {
   clickEnabled: boolean;
@@ -19,27 +18,32 @@ const Numbers: React.FC<Prop> = ({
 }) => {
   return (
     <div className="numbers">
-      {isShowBackButton && (
-        <Button
-          variant="danger"
-          className="btn-back"
+      <div className="numbers-toolbar">
+        <span className="hint-text">서로 다른 3자리 숫자를 입력하세요</span>
+        <button
+          type="button"
+          className={`btn-back ${isShowBackButton ? "visible" : ""}`}
+          disabled={!isShowBackButton}
           onClick={() => onClickBack()}
+          aria-label="한 글자 지우기"
         >
-          ←
-        </Button>
-      )}
+          지우기 ⌫
+        </button>
+      </div>
 
       <div className="numbers-grid">
         {Array(10)
           .fill(0)
           .map((_, index) => (
-            <Button
+            <button
+              type="button"
               key={index}
+              className="keypad-btn"
               disabled={!clickEnabled}
               onClick={() => onClickNumber(index)}
             >
               {index}
-            </Button>
+            </button>
           ))}
       </div>
     </div>

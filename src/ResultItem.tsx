@@ -4,9 +4,10 @@ import React from "react";
 interface Props {
   answer: number[];
   number: number[];
+  round?: number;
 }
 
-const ResultItem: React.FC<Props> = ({ answer, number }) => {
+const ResultItem: React.FC<Props> = ({ answer, number, round }) => {
   const strike = () => {
     return answer.filter((e, index) => e === number[index]).length;
   };
@@ -32,15 +33,16 @@ const ResultItem: React.FC<Props> = ({ answer, number }) => {
   };
 
   return (
-    <div className="result-item">
-      <div>
+    <div className="result-item filled">
+      {round && <span className="item-round">{round}회</span>}
+      <div className="number-row">
         {number.map((e, index) => (
-          <span key={index}>{e}</span>
+          <span key={index} className="num">{e}</span>
         ))}
       </div>
-      <div>
+      <div className="badge-row">
         {result().map((e, index) => (
-          <span key={index} className={classNames([e, `item-${index + 1}`])}>
+          <span key={index} className={classNames(["badge-tag", e, `item-${index + 1}`])}>
             {e}
           </span>
         ))}
