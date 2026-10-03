@@ -1,3 +1,4 @@
-https://jhlov.github.io/baseball/sitemap.xml
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://jhlov.github.io/baseball/sitemap.xml
