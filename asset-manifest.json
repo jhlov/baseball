@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/baseball/static/css/main.482d4bfa.chunk.css",
+    "main.css": "/baseball/static/css/main.fe0808fb.chunk.css",
     "main.js": "/baseball/static/js/main.23a29aca.chunk.js",
     "runtime-main.js": "/baseball/static/js/runtime-main.b2af7c80.js",
     "static/js/2.36a16086.chunk.js": "/baseball/static/js/2.36a16086.chunk.js",
@@ -11,7 +11,7 @@
   "entrypoints": [
     "static/js/runtime-main.b2af7c80.js",
     "static/js/2.36a16086.chunk.js",
-    "static/css/main.482d4bfa.chunk.css",
+    "static/css/main.fe0808fb.chunk.css",
     "static/js/main.23a29aca.chunk.js"
   ]
 }
