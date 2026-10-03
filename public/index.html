@@ -34,6 +34,15 @@
         e.preventDefault();
       }
     }, { passive: false });
+
+    // 모바일 브라우저 주소창 제외 실제 높이 계산
+    function setScreenHeight() {
+      var vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', vh + 'px');
+    }
+    setScreenHeight();
+    window.addEventListener('resize', setScreenHeight);
+    window.addEventListener('orientationchange', setScreenHeight);
   </script>
 
   <!-- 기본 SEO 메타 태그 -->

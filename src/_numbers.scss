@@ -1,14 +1,15 @@
 .numbers {
   position: relative;
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 0;
+  flex-shrink: 0;
 
   .numbers-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 34px;
-    margin-bottom: 8px;
+    min-height: 26px;
+    margin-bottom: 4px;
     padding: 0 4px;
 
     .hint-text {
@@ -21,11 +22,11 @@
       border: none;
       background-color: #fee2e2;
       color: #ef4444;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
       font-family: inherit;
-      padding: 4px 12px;
-      border-radius: 12px;
+      padding: 3px 12px;
+      border-radius: 10px;
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
@@ -52,11 +53,11 @@
     gap: 8px;
 
     .keypad-btn {
-      height: 64px;
+      height: 60px;
       font-size: 32px;
       font-weight: bold;
       font-family: inherit;
-      border-radius: 16px;
+      border-radius: 14px;
       border: 1px solid #e2e8f0;
       background: #ffffff;
       color: #1e293b;
@@ -72,6 +73,7 @@
       @include media-breakpoint-up(sm) {
         height: 70px;
         font-size: 36px;
+        border-radius: 16px;
       }
 
       &:hover:not(:disabled) {
