@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/baseball/static/css/main.ebdeb11e.chunk.css",
-    "main.js": "/baseball/static/js/main.23a29aca.chunk.js",
+    "main.css": "/baseball/static/css/main.7aa22c93.chunk.css",
+    "main.js": "/baseball/static/js/main.5b2b3819.chunk.js",
     "runtime-main.js": "/baseball/static/js/runtime-main.b2af7c80.js",
-    "static/js/2.36a16086.chunk.js": "/baseball/static/js/2.36a16086.chunk.js",
+    "static/js/2.b95b3ff2.chunk.js": "/baseball/static/js/2.b95b3ff2.chunk.js",
     "static/js/3.63a2a2c0.chunk.js": "/baseball/static/js/3.63a2a2c0.chunk.js",
     "index.html": "/baseball/index.html",
-    "static/js/2.36a16086.chunk.js.LICENSE.txt": "/baseball/static/js/2.36a16086.chunk.js.LICENSE.txt"
+    "static/js/2.b95b3ff2.chunk.js.LICENSE.txt": "/baseball/static/js/2.b95b3ff2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b2af7c80.js",
-    "static/js/2.36a16086.chunk.js",
-    "static/css/main.ebdeb11e.chunk.css",
-    "static/js/main.23a29aca.chunk.js"
+    "static/js/2.b95b3ff2.chunk.js",
+    "static/css/main.7aa22c93.chunk.css",
+    "static/js/main.5b2b3819.chunk.js"
   ]
 }
