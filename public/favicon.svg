@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 야구공 본체 -->
+  <circle cx="32" cy="32" r="29" fill="#FFFFFF" stroke="#333333" stroke-width="2.5" />
+  
+  <!-- 왼쪽 실밥 솔기 곡선 -->
+  <path d="M 22 5 C 10 17 10 47 22 59" fill="none" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" />
+  
+  <!-- 왼쪽 실밥 스티치 (사선 바늘땀) -->
+  <path d="
+    M 19 8 L 25 12
+    M 15 16 L 22 19
+    M 12 24 L 19 26
+    M 11 32 L 18 32
+    M 12 40 L 19 38
+    M 15 48 L 22 45
+    M 19 56 L 25 52
+  " fill="none" stroke="#E53935" stroke-width="2.2" stroke-linecap="round" />
+
+  <!-- 오른쪽 실밥 솔기 곡선 -->
+  <path d="M 42 5 C 54 17 54 47 42 59" fill="none" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" />
+  
+  <!-- 오른쪽 실밥 스티치 (사선 바늘땀) -->
+  <path d="
+    M 45 8 L 39 12
+    M 49 16 L 42 19
+    M 52 24 L 45 26
+    M 53 32 L 46 32
+    M 52 40 L 45 38
+    M 49 48 L 42 45
+    M 45 56 L 39 52
+  " fill="none" stroke="#E53935" stroke-width="2.2" stroke-linecap="round" />
+</svg>
