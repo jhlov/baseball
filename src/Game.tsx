@@ -53,23 +53,24 @@ const Game = () => {
         const newNumberList = [...numberList, newNumber];
         //console.log(newNumberList);
         setNumberList(newNumberList);
+        // 순차 판정 애니메이션 동안 클릭 잠금 (1.8초)
         setClickEnabled(false);
         setTimeout(() => {
           setClickEnabled(true);
-        }, 1000);
+        }, 1800);
 
-        // 정답 체크
+        // 정답 체크 (결과 램프 3단계 점등 완료 후 alert 표시)
         if (answerNumber.join() === newNumber.join()) {
           setTimeout(() => {
             alert("승리!!!");
             init();
-          }, 1000);
+          }, 2000);
         } else if (newNumberList.length === 9) {
           // 실패 체크
           setTimeout(() => {
             alert("실패!!!");
             init();
-          }, 1000);
+          }, 2000);
         }
       }
     }

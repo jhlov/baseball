@@ -20,6 +20,7 @@ const Result: React.FC<Props> = ({ answer, numberList }) => {
                 round={index + 1}
                 answer={answer}
                 number={item}
+                isLatest={index === numberList.length - 1}
               />
             );
           }
