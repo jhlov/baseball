@@ -35,6 +35,10 @@ const Game = () => {
     updateAnswerNumber();
     setCurNumber([]);
     setNumberList([]);
+    setTimeout(() => {
+      window.focus();
+      gameRef.current?.focus();
+    }, 50);
   };
 
   const onClickNumber = (number: number) => {
@@ -77,8 +81,45 @@ const Game = () => {
     }
   };
 
+  const gameRef = React.useRef<HTMLDivElement>(null);
+  const handlersRef = React.useRef({ onClickNumber, onClickBack, clickEnabled });
+  handlersRef.current = { onClickNumber, onClickBack, clickEnabled };
+
+  useEffect(() => {
+    // 마운트 시 게임 컨테이너로 포커스 자동 이동
+    window.focus();
+    gameRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 키를 꾹 누르고 있을 때의 연속 트리거 방지
+      if (e.repeat) return;
+
+      // 0~9 숫자 키패드 지원
+      if (/^[0-9]$/.test(e.key)) {
+        if (handlersRef.current.clickEnabled) {
+          e.preventDefault();
+          handlersRef.current.onClickNumber(parseInt(e.key, 10));
+        }
+      } else if (e.key === "Backspace") {
+        e.preventDefault();
+        handlersRef.current.onClickBack();
+      }
+    };
+
+    // window 단일 리스너 등록
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
-    <div className="game d-flex flex-column">
+    <div
+      ref={gameRef}
+      tabIndex={-1}
+      className="game d-flex flex-column"
+      style={{ outline: "none" }}
+    >
       <h1 className="game-title">
         <span className="icon">⚾</span> 숫자 야구 게임
       </h1>
